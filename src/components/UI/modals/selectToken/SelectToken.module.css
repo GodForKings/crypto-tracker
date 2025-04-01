@@ -1,0 +1,92 @@
+.modalContainer {
+	position: fixed;
+	inset: 0;
+	height: 100vh;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: -100;
+	display: none;
+	cursor: not-allowed;
+}
+.activeModal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+}
+.modalForm {
+	background-color: rgba(15, 15, 15, 1);
+	height: 700px;
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-inline: 3rem;
+	padding-top: 2rem;
+	cursor: default;
+	overflow: auto;
+	box-shadow: 0 0 900px var(--color-sd);
+}
+.inputBox {
+	position: relative;
+	width: 100%;
+	margin-block: 1rem;
+	transition: all 2s ease;
+}
+.modalForm .inputBox input {
+	position: relative;
+	width: 100%;
+	padding: 12px 20px;
+	background: rgb(39, 39, 39);
+	border: 1px solid var(--impressive-green);
+	border-radius: 10px;
+	font-size: 1.5rem;
+	color: #fff;
+	box-shadow: none;
+	outline: none;
+}
+.modalForm .inputBox input:focus {
+	outline: var(--impressive-green) solid 3px;
+}
+.token__container {
+	width: 100%;
+}
+.token__container div {
+	width: 100%;
+}
+.token__container div a {
+	font-size: 1.3rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.active {
+	position: sticky;
+	bottom: 0;
+	width: 100%;
+	height: 250px;
+	background-color: var(--dark-mode);
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
+	box-shadow: 5px 10px 150px #000, -5px 10px 150px #000;
+}
+
+.active .inputBox {
+	width: 70%;
+}
+.active p {
+	font-size: 2rem;
+}
+.disabledInput {
+	display: none;
+}
+.countContainer {
+	display: flex;
+	justify-content: space-evenly;
+}
+.countContainer div {
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 40%;
+}

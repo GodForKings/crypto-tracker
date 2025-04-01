@@ -1,13 +1,101 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+	--elastic: calc(1vw + 1vh);
+	--color-sd: rgba(42, 173, 9, 0.4);
+	--impressive-green: rgb(11, 207, 1);
+	--dark-mode: #212121;
+	--base-white: #ffffff;
+	--almost-black: #010101;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+	font-family: 'CB2077';
+	src: url('./assets/fonts/quick-ravage-grunge.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+#root {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100vh;
+}
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: linear-gradient(
+		180deg,
+		rgb(1, 1, 1) 14%,
+		rgb(21, 21, 21) 58%
+	);
+}
+::-webkit-scrollbar {
+	width: 10px;
+	background-color: rgb(21, 21, 21);
+}
+::-webkit-scrollbar-thumb {
+	cursor: ns-resize;
+	height: 1.3rem;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background: var(--impressive-green);
+}
+body {
+	color: var(--base-white);
+	margin: 0;
+	letter-spacing: 1px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: rgb(25, 25, 25);
+}
+
+* {
+	font-family: CB2077;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	/* outline: 5px solid green !important; */
+}
+
+html {
+	scroll-behavior: smooth;
+}
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+a {
+	color: var(--base-white);
+	text-decoration: none;
+	padding: 0;
+	margin: 0;
+}
+dl,
+dt,
+dd {
+	margin: 0;
+	padding: 0;
+}
+button {
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+}
+video {
+	margin: 0;
+	padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+}
+/* Для NavLink */
+nav ul li a.active {
+	background: var(--impressive-green);
+	color: var(--dark-mode);
+	box-shadow: 0 0px 10px var(--impressive-green);
 }

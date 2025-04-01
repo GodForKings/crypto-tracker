@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# **Crypto-tracker** _(Description)_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application that allows you to track the added tokens in the portfolio, to see the price change in real time through Websockets. It shows only active dollar trading pairs via the Binance API.
 
-## Available Scripts
+> Веб-приложение, которое позволяет отслеживать добавленные токены в портфель, видеть изменение цены в режиме реального времени через Websockets. Оно показывает только активные торговые пары в долларах через API Binance.
 
-In the project directory, you can run:
+## Frontend:
 
-### `npm start`
+- `React` is a library for building user interfaces.
+  > _React_ - Библиотека для построения пользовательских интерфейсов.
+- `GSAP` is a library for animation.
+  > _GSAP_ - Библиотека для анимации.
+- `MobX` - Application status management.
+  > _MobX_ - Управление состоянием приложения.
+- `React Router Dom v7.3` - Routing management in the React application.
+  > _React Router Dom_ - Управление маршрутизацией в React-приложении.
+- `TypeScript`
+- `Redux Toolkit` - the official library for effective state management in Redux-based applications
+- `RTK Query` - a tool for extracting and caching data, which is included in the Redux Toolkit. It is based on the principles of Redux and provides an easy way to manage the interaction with the server.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Installation/Установка
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `git clone` <https://github.com/GodForKings/crypto-tracker.git>
 
-### `npm test`
+1. `cd client`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Create it `.env` with its own configuration
+  - `npm install`
+  - `npm start`
