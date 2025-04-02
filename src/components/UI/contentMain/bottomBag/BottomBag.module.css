@@ -1,23 +1,44 @@
 .bottomBagContainer {
 	position: relative;
-	min-height: 400px;
 	width: 100%;
-	background-color: rgb(1, 1, 1, 0.8);
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 }
 .bagContent {
+	background-color: rgb(1, 1, 1, 0.8);
+	box-shadow: 0px 2px 10px var(--impressive-green);
 	width: 70%;
-	height: 90%;
-	font-size: 3rem;
+	min-height: 30vh;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+	font-size: 3.5rem;
+	border-radius: 0 150px 0 0;
 }
-.bagContent h3 {
-	font-size: 2.5rem;
+.cartPrice {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	min-height: 80%;
+}
+.cartPrice h3 {
+	font-weight: 100;
 }
 .clearBtn {
 	background-color: rgba(16, 18, 17, 0.8);
+}
+.bagContent span {
+	font-size: 5rem;
+	color: var(--impressive-green);
+}
+
+@media (max-width: 1000px) {
+	.bagContent {
+		font-size: calc(2 * var(--elastic));
+		width: 100%;
+	}
+	.bagContent span {
+		font-size: calc(3 * var(--elastic));
+	}
 }

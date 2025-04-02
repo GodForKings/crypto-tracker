@@ -7,19 +7,66 @@
 	align-items: center;
 	justify-content: center;
 	background-color: var(--dark-mode);
-	box-shadow: 0px -10px 5px var(--dark-mode);
+	box-shadow: 0px 0px 100px var(--impressive-green),
+		0px 2px 10px var(--impressive-green);
+	overflow: hidden;
 }
 .footerList {
-	padding: 3rem;
+	margin: 2rem;
+	padding: 1rem;
 	border-radius: 70px 10px;
 	display: flex;
 	width: 70%;
 	justify-content: flex-end;
 	background-color: #000;
+	box-shadow: 0 5px 10px #000;
+}
+.footerContacts {
+	font-weight: 100;
+	color: var(--dark-mode);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 5rem;
 }
 .footerList li {
-	border: 3px solid var(--impressive-green);
+	display: flex;
+	align-items: center;
+	justify-self: center;
+	margin-left: calc(var(--elastic));
 	padding: 1rem;
-	border-radius: 1rem;
-	margin-left: 2rem;
+}
+.footerList li a {
+	height: 80%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s;
+	opacity: 0.8;
+}
+.footerList li a img {
+	height: 100%;
+}
+
+@media (hover: hover) {
+	.footerList li a:hover {
+		opacity: 0.4;
+	}
+}
+@media (hover: none) {
+	.footerList li a:active {
+		opacity: 0.4;
+	}
+}
+@media (max-width: 1000px) {
+	.footerList {
+		width: 100%;
+	}
+	.footerContacts {
+		font-size: calc(3 * var(--elastic));
+	}
+	.footerList li a {
+		height: calc(3 * var(--elastic));
+	}
 }

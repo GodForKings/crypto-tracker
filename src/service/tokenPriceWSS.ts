@@ -1,6 +1,7 @@
 import { updateTokenPrice } from '../store/reducers/TokenSlice'
 import { IAsset } from '../models/IAsset'
 import { ITokenWSS } from '../models/IToken'
+import { error } from 'console'
 
 let socket: WebSocket
 
@@ -24,6 +25,8 @@ const setupWebSocket = (addedTokens: IAsset[], dispatch: any) => {
 				})
 			)
 		}
+		socket.onclose = () => {}
+		socket.onerror = () => {}
 	} catch (error) {
 		console.error('WebSocket error:', error)
 	}

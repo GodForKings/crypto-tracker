@@ -52,7 +52,7 @@ const InfoBlock: FC = () => {
 					<ul key={token.asset} className={style.badGrid}>
 						<li>{token.asset}</li>
 						<li>{token.quantity}</li>
-						<li>$ {token.price}</li>
+						<li>${token.price}</li>
 						<li>
 							$
 							{token.totalCost > 1

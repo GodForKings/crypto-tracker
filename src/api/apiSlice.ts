@@ -8,11 +8,13 @@ export const apiTokens = createApi({
 		baseUrl: process.env.REACT_APP_BINANCE_API_HTTPS,
 	}),
 	endpoints: build => ({
+		// Получить все токены \\
 		fetchAllTokens: build.query<IToken[], void>({
 			query: () => ({
 				url: '/ticker/24hr',
 			}),
 		}),
+		//Для соло запроса токена \\
 		fetchTokensInAssets: build.query<IToken[], string>({
 			query: (asset: string) => ({
 				url: '/ticker/24hr',

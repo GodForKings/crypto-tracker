@@ -31,7 +31,7 @@
 	color: var(--impressive-green);
 	padding: 1rem;
 	height: 100%;
-	transition: all 0.1s ease;
+	transition: all 0.2s ease;
 	border-radius: 3px;
 }
 .navbar li + li {
@@ -45,5 +45,15 @@
 @media (hover: none) {
 	.navbar li a:active {
 		opacity: 0.5;
+	}
+}
+
+@media (max-width: 1000px) {
+	.navigation {
+		height: 60px;
+	}
+	.navbar li a {
+		font-size: calc(1.5 * var(--elastic));
+		padding: calc(0.8 * var(--elastic));
 	}
 }
