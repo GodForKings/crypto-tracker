@@ -16,8 +16,9 @@
 }
 .modalForm {
 	background-color: rgba(15, 15, 15, 1);
-	height: 700px;
+	height: 80%;
 	width: 600px;
+	min-width: 300px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -61,10 +62,11 @@
 }
 
 .active {
+	padding: var(--elastic);
 	position: sticky;
 	bottom: 0;
 	width: 100%;
-	height: 250px;
+	height: fit-content;
 	background-color: var(--dark-mode);
 	display: flex;
 	align-items: center;
