@@ -1,0 +1,20 @@
+.container {
+	flex: 1;
+	width: 100%;
+	margin-top: 90px;
+}
+.headSlide {
+	overflow: hidden;
+	height: fit-content;
+	position: relative;
+}
+.titleSlide {
+	position: absolute;
+	top: calc(45% - 10vh);
+	left: calc(45% - 10vw);
+	z-index: 3;
+	font-size: calc(6 * var(--elastic));
+	font-weight: 100;
+	padding: var(--elastic);
+	background-color: rgba(0, 0, 0, 0.7);
+}
