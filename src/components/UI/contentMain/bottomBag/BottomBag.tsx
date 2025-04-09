@@ -25,17 +25,19 @@ const BottomBag: FC = () => {
 	return (
 		<section className={style.bottomBagContainer}>
 			<div className={style.bagContent} ref={refBag}>
-				<SquareButton
-					className={style.clearBtn}
-					onClick={() => dispatch(walletClear())}
-					disabled={cartPrice > 0 ? false : true}
-				>
-					Clear
-				</SquareButton>
 				<div className={style.cartPrice}>
 					<h3>Your portfolio </h3>
 					<span>$ {formatter.format(cartPrice)}</span>
 				</div>
+				{cartPrice > 0 && (
+					<SquareButton
+						className={style.clearBtn}
+						onClick={() => dispatch(walletClear())}
+						disabled={cartPrice > 0 ? false : true}
+					>
+						Clear
+					</SquareButton>
+				)}
 			</div>
 		</section>
 	)

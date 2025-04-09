@@ -1,0 +1,20 @@
+.container {
+	min-width: 100%;
+	min-height: 100vh;
+	flex: 1;
+	position: relative;
+}
+.flexBox {
+	padding: 100px 10vw;
+}
+.gridArea {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	background-color: #110f0f80;
+	padding: calc(var(--elastic));
+}
+.techElement {
+}
+.techImage {
+	height: 250px;
+}

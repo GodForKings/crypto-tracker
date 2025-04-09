@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState, useRef } from 'react'
 import style from './Welcome.module.css'
-import { ISlider } from '../../../models/ISlider'
+import { ISlider } from '../../../../models/ISlider'
 import { gsap } from 'gsap'
-import img1 from '../../../assets/images/welcome/img1.png'
-import img2 from '../../../assets/images/welcome/img2.png'
-import img3 from '../../../assets/images/welcome/img3.png'
-import img4 from '../../../assets/images/welcome/img4.png'
+import img1 from '../../../../assets/images/welcome/img1.png'
+import img2 from '../../../../assets/images/welcome/img2.png'
+import img3 from '../../../../assets/images/welcome/img3.png'
+import img4 from '../../../../assets/images/welcome/img4.png'
 
 const Welcome: FC = () => {
 	const [activeSlide, setActiveSlide] = useState<number>(0)
@@ -44,7 +44,7 @@ const Welcome: FC = () => {
 					{
 						color: '#0bcf01',
 						duration: 1,
-						ease: 'power2.out',
+						ease: 'power3.out',
 						y: 0,
 						opacity: 1,
 					}
@@ -61,10 +61,10 @@ const Welcome: FC = () => {
 					className={style.focusSlide}
 					ref={refSlide}
 				>
-					<div>
+					<div className={style.imgSlide}>
 						<img src={sliderItems[activeSlide].img1} />
 					</div>
-					<div>
+					<div className={style.imgSlide}>
 						<img src={sliderItems[activeSlide].img2} />
 					</div>
 				</div>

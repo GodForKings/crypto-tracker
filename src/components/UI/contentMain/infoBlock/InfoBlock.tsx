@@ -48,40 +48,46 @@ const InfoBlock: FC = () => {
 					<li>24h Change</li>
 					<li>% wallet</li>
 				</ul>
-				{addedTokens.map(token => (
-					<ul key={token.asset} className={style.badGrid}>
-						<li>{token.asset}</li>
-						<li>{token.quantity}</li>
-						<li>${token.price}</li>
-						<li>
-							$
-							{token.totalCost > 1
-								? formatter.format(Number(token.totalCost.toFixed(3)))
-								: token.totalCost.toFixed(6)}
-						</li>
-						<li
-							style={
-								token.changeDay < 0 ? { color: COLORED } : { color: COLORGREEN }
-							}
-						>
-							{token.changeDay}%
-						</li>
-						<li>
-							{token.sliceInBug * 100 >= 0.01
-								? (token.sliceInBug * 100).toFixed(2)
-								: `<  0.01`}
-							%
-						</li>
-						<li>
-							<button
-								className={style.btnRemove}
-								onClick={() => dispatch(walletDeleteToken(token.asset))}
+				{addedTokens.length ? (
+					addedTokens.map(token => (
+						<ul key={token.asset} className={style.badGrid}>
+							<li>{token.asset}</li>
+							<li>{token.quantity}</li>
+							<li>${token.price}</li>
+							<li>
+								$
+								{token.totalCost > 1
+									? formatter.format(Number(token.totalCost.toFixed(3)))
+									: token.totalCost.toFixed(6)}
+							</li>
+							<li
+								style={
+									token.changeDay < 0
+										? { color: COLORED }
+										: { color: COLORGREEN }
+								}
 							>
-								<img src={imgDelete} />
-							</button>
-						</li>
-					</ul>
-				))}
+								{token.changeDay}%
+							</li>
+							<li>
+								{token.sliceInBug * 100 >= 0.01
+									? (token.sliceInBug * 100).toFixed(2)
+									: `<  0.01`}
+								%
+							</li>
+							<li>
+								<button
+									className={style.btnRemove}
+									onClick={() => dispatch(walletDeleteToken(token.asset))}
+								>
+									<img src={imgDelete} />
+								</button>
+							</li>
+						</ul>
+					))
+				) : (
+					<span className={style.bagOffer}>Add assets for tracking</span>
+				)}
 			</div>
 			<SquareButton
 				onClick={() => setShowSelect(true)}

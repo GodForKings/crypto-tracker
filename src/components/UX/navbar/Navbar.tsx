@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useRef } from 'react'
 import classes from './Navbar.module.css'
 import { Link, NavLink } from 'react-router-dom'
-import { MAIN, ABOUT } from '../../../constants/nameRoutes'
+import { MAIN, ABOUT, PORTFOLIO } from '../../../constants/nameRoutes'
 import logo from '../../../assets/images/logo.png'
-import { gsap, random } from 'gsap'
+import { gsap } from 'gsap'
 
 const Navbar: FC = () => {
 	const navbarRef = useRef<HTMLElement>(null)
@@ -27,7 +27,7 @@ const Navbar: FC = () => {
 			duration: 3,
 			ease: 'elastic.in',
 			delay: 0.5,
-			yoyo: true, // Возврат к исходному положению
+			yoyo: true, // Возврат к исходному положению \\
 			repeat: -1,
 		})
 		return () => {
@@ -41,10 +41,13 @@ const Navbar: FC = () => {
 			</Link>
 			<ul className={classes.navbar}>
 				<li>
-					<NavLink to={MAIN}>General</NavLink>
+					<NavLink to={MAIN}>Crypto</NavLink>
 				</li>
 				<li>
 					<NavLink to={ABOUT}>About us</NavLink>
+				</li>
+				<li>
+					<NavLink to={PORTFOLIO}>Portfolio</NavLink>
 				</li>
 			</ul>
 		</nav>

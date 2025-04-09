@@ -30,6 +30,13 @@
 	margin: 1rem;
 	gap: 10px;
 }
+.bagOffer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: var(--elastic);
+	font-size: calc(3 * var(--elastic));
+}
 .badGrid li {
 	display: flex;
 	justify-content: center;
