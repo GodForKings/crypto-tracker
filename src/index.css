@@ -5,6 +5,11 @@
 	--dark-mode: #212121;
 	--base-white: #ffffff;
 	--almost-black: #010101;
+	--cb-color1: 113, 28, 145;
+	--cb-color2: 234, 0, 217;
+	--cb-color3: 10, 189, 198;
+	--cb-color4: 19, 62, 124;
+	--cb-color5: 9, 24, 51;
 }
 
 @font-face {

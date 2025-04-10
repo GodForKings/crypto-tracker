@@ -68,9 +68,10 @@ const SelectToken: FC<ISelected> = ({ show, disabledShow, tokens }) => {
 				<div className={style.token__container}>
 					{sortedTokens.map(token => (
 						<div key={token.symbol}>
-							<a
-								href={`#${token.symbol}`}
+							<button
 								onClick={() => changeTargetToken(token)}
+								className={style.choose}
+								aria-label={`Выбрать токен ${token.symbol}`}
 							>
 								<span>{token.symbol}</span>
 								<span
@@ -83,7 +84,7 @@ const SelectToken: FC<ISelected> = ({ show, disabledShow, tokens }) => {
 									{token.priceChangePercent}%
 								</span>
 								<span>${token.lastPrice}</span>
-							</a>
+							</button>
 						</div>
 					))}
 					<div className={showCount ? style.active : style.disabledInput}>

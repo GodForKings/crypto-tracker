@@ -23,7 +23,7 @@ const Navbar: FC = () => {
 			}
 		)
 		gsap.to(logoRef.current, {
-			x: `${gsap.utils.random(-10, 50)}px`,
+			x: `${gsap.utils.random(-10, 40)}px`,
 			duration: 3,
 			ease: 'elastic.in',
 			delay: 0.5,

@@ -29,6 +29,7 @@ export const tokenSlice = createSlice({
 					state.addedTokens = [
 						...JSON.parse(localStorage.getItem('my_assets') as string),
 					]
+					tokenSlice.caseReducers.fixedCart(state)
 				} catch (error) {
 					state.error =
 						typeof error === 'string' ? error : `this is error in local storage`

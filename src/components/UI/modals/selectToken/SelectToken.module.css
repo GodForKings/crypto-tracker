@@ -55,7 +55,10 @@
 .token__container div {
 	width: 100%;
 }
-.token__container div a {
+.token__container div .choose {
+	width: 100%;
+	background-color: transparent;
+	color: #fff;
 	font-size: 1.3rem;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);

@@ -15,7 +15,7 @@ export const apiTokens = createApi({
 			}),
 		}),
 		//Для соло запроса токена \\
-		fetchTokensInAssets: build.query<IToken[], string>({
+		freshPrice: build.query<IToken[], string>({
 			query: (asset: string) => ({
 				url: '/ticker/24hr',
 				params: {

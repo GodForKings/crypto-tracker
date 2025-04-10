@@ -8,7 +8,7 @@
 	box-shadow: 0px 2px 10px var(--impressive-green);
 	display: flex;
 	align-items: center;
-	gap: 70px;
+	gap: 40px;
 	padding-inline: 10vw;
 }
 .logoLink {
@@ -53,7 +53,7 @@
 		height: 60px;
 	}
 	.navbar li a {
-		font-size: calc(1.5 * var(--elastic));
+		font-size: calc(1 * var(--elastic));
 		padding: calc(0.8 * var(--elastic));
 	}
 }

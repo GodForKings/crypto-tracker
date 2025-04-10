@@ -1,9 +1,9 @@
 import { updateTokenPrice } from '../store/reducers/TokenSlice'
 import { IAsset } from '../models/IAsset'
 import { ITokenWSS } from '../models/IToken'
-import { error } from 'console'
 
 let socket: WebSocket
+let reconnectInterval: NodeJS.Timeout | null = null
 
 const setupWebSocket = (addedTokens: IAsset[], dispatch: any) => {
 	if (socket) socket.close()
@@ -11,25 +11,46 @@ const setupWebSocket = (addedTokens: IAsset[], dispatch: any) => {
 	const symbols = addedTokens
 		.map(token => token.asset.toLowerCase() + 'usdt@ticker')
 		.join('/')
-
-	try {
-		socket = new WebSocket(
-			`${process.env.REACT_APP_BINANCE_API_WEBSOCKET}/${symbols}`
-		)
-		socket.onmessage = event => {
-			const data: ITokenWSS = JSON.parse(event.data)
-			dispatch(
-				updateTokenPrice({
-					s: data.s.replace(/USDT$/, ''), // название пары
-					c: Number(data.c), // цена токена
-				})
+	const connect = () => {
+		try {
+			socket = new WebSocket(
+				`${process.env.REACT_APP_BINANCE_API_WEBSOCKET}/${symbols}`
 			)
+			socket.onmessage = event => {
+				const data: ITokenWSS = JSON.parse(event.data)
+				dispatch(
+					updateTokenPrice({
+						s: data.s.replace(/USDT$/, ''), // название пары
+						c: Number(data.c), // цена токена
+					})
+				)
+				if (reconnectInterval) {
+					clearInterval(reconnectInterval)
+					reconnectInterval = null
+				}
+			}
+			socket.onclose = () => {
+				reconnect()
+			}
+			socket.onerror = () => {
+				socket.close()
+			}
+		} catch (error) {
+			reconnect()
+			console.error(`ошибка подключения по websocket ${error}`)
 		}
-		socket.onclose = () => {}
-		socket.onerror = () => {}
-	} catch (error) {
-		console.error('WebSocket error:', error)
 	}
+
+	// переподключение сокета \\
+	const reconnect = () => {
+		if (reconnectInterval) return
+		reconnectInterval = setInterval(() => {
+			connect()
+			console.log(`попытка переподключения соединения`)
+		}, 5000)
+	}
+
+	connect()
 
 	return socket
 }

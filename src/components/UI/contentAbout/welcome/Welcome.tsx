@@ -16,7 +16,22 @@ const Welcome: FC = () => {
 		{ id: 2, title: 'We make a flame out of a spark', img1: img3, img2: img4 },
 	]
 	const swapSlide = () => {
-		setActiveSlide(prev => (sliderItems.length - 1 > prev ? prev + 1 : 0))
+		const tl = gsap.timeline({
+			onComplete: () => {
+				setActiveSlide(prev => (sliderItems.length - 1 > prev ? prev + 1 : 0))
+			},
+		})
+		tl.to(refSlide.current, {
+			opacity: 0,
+			x: `${gsap.utils.random(-200, -400)}px`,
+			duration: 0.5,
+			ease: 'power3.inOut',
+		}).to(refTitle.current, {
+			opacity: 0,
+			duration: 0.5,
+			ease: 'power3.inOut',
+			y: '-200px',
+		})
 	}
 	useEffect(() => {
 		const timer = setInterval(() => {
@@ -35,20 +50,22 @@ const Welcome: FC = () => {
 						opacity: 1,
 						x: 0,
 						ease: 'power3.inOut',
-						duration: 2,
+						duration: 1,
 					}
 				)
 				.fromTo(
 					refTitle.current,
-					{ color: '#5555ff', y: '-300px', opacity: 0 },
+					{ y: '-300px', opacity: 0 },
 					{
-						color: '#0bcf01',
 						duration: 1,
-						ease: 'power3.out',
+						ease: 'power3.inOut',
 						y: 0,
 						opacity: 1,
 					}
 				)
+		return () => {
+			tl.kill()
+		}
 	}, [activeSlide])
 	return (
 		<section className={style.container}>

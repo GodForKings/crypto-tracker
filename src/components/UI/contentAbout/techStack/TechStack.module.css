@@ -3,18 +3,73 @@
 	min-height: 100vh;
 	flex: 1;
 	position: relative;
+	text-align: center;
 }
 .flexBox {
-	padding: 100px 10vw;
+	margin-inline: 10vw;
+	margin-bottom: calc(2 * var(--elastic));
+	background-color: rgba(0, 0, 0, 0.9);
+}
+.techHeading {
+	font-size: calc(5 * var(--elastic));
+	font-weight: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--elastic);
+	background-color: rgba(0, 8, 255, 0.7);
+	text-shadow: 10px 10px 1vh #000;
 }
 .gridArea {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	background-color: #110f0f80;
-	padding: calc(var(--elastic));
+	background-color: var(--dark);
+	padding: var(--elastic);
 }
 .techElement {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.techElement h3 {
+	font-weight: 400;
+	font-size: 1.5rem;
+	padding: 5px;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.techElement button {
+	background-color: transparent;
+	width: fit-content;
+	transition: all 0.2s ease-in;
+	border-radius: 15px;
+}
+button.active {
+	box-shadow: 0 0 13px rgb(0, 42, 255) inset, 0 0 15px rgb(0, 8, 255);
 }
 .techImage {
-	height: 250px;
+	height: calc(5 * var(--elastic));
+}
+.techDesc {
+	display: flex;
+	align-items: center;
+	text-align: left;
+	width: 100%;
+	padding: var(--elastic);
+	font-size: calc(1.5 * var(--elastic));
+	color: var(--almost-black);
+	background-color: rgba(0, 8, 255, 0.7);
+}
+
+@media (max-width: 1000px) {
+	.gridArea {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.flexBox {
+		margin-inline: 0;
+	}
 }
