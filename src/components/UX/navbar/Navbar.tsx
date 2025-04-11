@@ -1,13 +1,15 @@
 import React, { FC, useEffect, useRef } from 'react'
 import classes from './Navbar.module.css'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { MAIN, ABOUT, PORTFOLIO } from '../../../constants/nameRoutes'
 import logo from '../../../assets/images/logo.png'
 import { gsap } from 'gsap'
+import { useFilterColor } from '../../../hooks/modification'
 
 const Navbar: FC = () => {
 	const navbarRef = useRef<HTMLElement>(null)
 	const logoRef = useRef<HTMLAnchorElement>(null)
+	const filterColor = useFilterColor()
 	useEffect(() => {
 		gsap.fromTo(
 			navbarRef.current,
@@ -23,7 +25,7 @@ const Navbar: FC = () => {
 			}
 		)
 		gsap.to(logoRef.current, {
-			x: `${gsap.utils.random(-10, 40)}px`,
+			x: `${gsap.utils.random(-10, 30)}px`,
 			duration: 3,
 			ease: 'elastic.in',
 			delay: 0.5,
@@ -35,7 +37,7 @@ const Navbar: FC = () => {
 		}
 	}, [])
 	return (
-		<nav className={classes.navigation} ref={navbarRef}>
+		<nav className={classes.navigation} ref={navbarRef} style={filterColor}>
 			<Link to={MAIN} ref={logoRef} className={classes.logoLink}>
 				<img src={logo} alt='logo' />
 			</Link>

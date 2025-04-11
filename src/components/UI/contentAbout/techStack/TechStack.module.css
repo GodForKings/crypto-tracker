@@ -18,7 +18,7 @@
 	justify-content: center;
 	padding: var(--elastic);
 	background-color: rgba(0, 8, 255, 0.7);
-	text-shadow: 10px 10px 1vh #000;
+	text-shadow: 5px 5px 1vh #000;
 }
 .gridArea {
 	display: grid;
@@ -62,6 +62,7 @@ button.active {
 	padding: var(--elastic);
 	font-size: calc(1.5 * var(--elastic));
 	color: var(--almost-black);
+	text-shadow: 0.2px 0.2px 0 #fff;
 	background-color: rgba(0, 8, 255, 0.7);
 }
 
