@@ -57,3 +57,12 @@
 		padding: calc(0.8 * var(--elastic));
 	}
 }
+
+@media (max-width: 400px) {
+	.navigation {
+		padding-inline: 5vw;
+	}
+	.navbar li + li {
+		margin: 1px;
+	}
+}

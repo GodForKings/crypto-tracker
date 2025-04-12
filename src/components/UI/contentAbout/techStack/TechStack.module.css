@@ -4,6 +4,7 @@
 	flex: 1;
 	position: relative;
 	text-align: center;
+	overflow: hidden;
 }
 .flexBox {
 	margin-inline: 10vw;
@@ -59,11 +60,12 @@ button.active {
 	align-items: center;
 	text-align: left;
 	width: 100%;
+	min-height: 300px;
 	padding: var(--elastic);
 	font-size: calc(1.5 * var(--elastic));
-	color: var(--almost-black);
-	text-shadow: 0.2px 0.2px 0 #fff;
-	background-color: rgba(0, 8, 255, 0.7);
+	color: var(--base-white);
+	text-shadow: 1px 1px 1px #ddad60;
+	background-color: var(--almost-black);
 }
 
 @media (max-width: 1000px) {
@@ -72,5 +74,13 @@ button.active {
 	}
 	.flexBox {
 		margin-inline: 0;
+	}
+	.techDesc {
+		min-height: 200px;
+	}
+}
+@media (max-width: 500px) {
+	.gridArea {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }

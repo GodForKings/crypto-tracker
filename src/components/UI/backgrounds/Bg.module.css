@@ -24,7 +24,7 @@
 	min-height: 100%;
 	min-width: 100%;
 	object-fit: cover;
-	animation: videoScale 15s cubic-bezier(0.21, 0.65, 0.78, 0.39) infinite;
+	animation: videoScale 15s linear infinite;
 }
 
 @keyframes videoScale {

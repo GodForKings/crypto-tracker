@@ -11,10 +11,11 @@ const Bg = () => {
 		<div className={style.container}>
 			<video
 				src={locationPath.pathname === ABOUT ? bgAbout : bgMain}
-				autoPlay
-				muted
-				loop
+				autoPlay={true}
+				muted={true}
+				loop={true}
 				preload='true'
+				playsInline={true}
 			></video>
 		</div>
 	)

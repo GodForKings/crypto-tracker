@@ -15,11 +15,9 @@ const BottomBag: FC = () => {
 		gsap.fromTo(
 			refBag.current,
 			{
-				opacity: 0,
-				scaleY: 0.5,
-				scaleX: 0.5,
+				x: '-100%',
 			},
-			{ scaleX: 1, scaleY: 1, opacity: 1, duration: 2.4, ease: 'power3.out' }
+			{ x: 0, duration: 1.5, ease: 'power3.out' }
 		)
 	}, [])
 	return (

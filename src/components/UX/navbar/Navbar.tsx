@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef } from 'react'
 import classes from './Navbar.module.css'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { MAIN, ABOUT, PORTFOLIO } from '../../../constants/nameRoutes'
 import logo from '../../../assets/images/logo.png'
 import { gsap } from 'gsap'
@@ -14,14 +14,14 @@ const Navbar: FC = () => {
 		gsap.fromTo(
 			navbarRef.current,
 			{
-				y: '-10px',
+				y: '-5px',
 				opacity: 0.3,
 			},
 			{
 				y: 0,
 				opacity: 1,
-				duration: 0.6,
-				ease: 'power4.out',
+				duration: 0.5,
+				ease: 'power3.out',
 			}
 		)
 		gsap.to(logoRef.current, {
