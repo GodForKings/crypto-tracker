@@ -10,8 +10,6 @@ A web application that allows you to track the added tokens in the portfolio, to
   > _React_ - Библиотека для построения пользовательских интерфейсов.
 - `GSAP` is a library for animation.
   > _GSAP_ - Библиотека для анимации.
-- `MobX` - Application status management.
-  > _MobX_ - Управление состоянием приложения.
 - `React Router Dom v7.3` - Routing management in the React application.
   > _React Router Dom_ - Управление маршрутизацией в React-приложении.
 - `TypeScript`

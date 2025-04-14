@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import classes from './Navbar.module.css'
 import { Link, NavLink } from 'react-router-dom'
 import { MAIN, ABOUT, PORTFOLIO } from '../../../constants/nameRoutes'
@@ -7,9 +7,14 @@ import { gsap } from 'gsap'
 import { useFilterColor } from '../../../hooks/modification'
 
 const Navbar: FC = () => {
+	const filterColor = useFilterColor()
+	const [burgerActive, setBurgerActive] = useState<boolean>(false)
 	const navbarRef = useRef<HTMLElement>(null)
 	const logoRef = useRef<HTMLAnchorElement>(null)
-	const filterColor = useFilterColor()
+	const spanRefs = useRef<HTMLSpanElement[]>([])
+	const navigationRef = useRef<HTMLUListElement>(null)
+
+	//  Для анимации logo  \\
 	useEffect(() => {
 		gsap.fromTo(
 			navbarRef.current,
@@ -28,20 +33,78 @@ const Navbar: FC = () => {
 			x: `${gsap.utils.random(-10, 30)}px`,
 			duration: 3,
 			ease: 'elastic.in',
-			delay: 0.5,
+			delay: 3,
 			yoyo: true, // Возврат к исходному положению \\
 			repeat: -1,
 		})
+		console.log(spanRefs)
 		return () => {
 			gsap.killTweensOf([logoRef.current, navbarRef.current])
 		}
 	}, [])
+
+	const addElInArr = (element: HTMLSpanElement) => {
+		if (element && !spanRefs.current.includes(element)) {
+			spanRefs.current.push(element)
+		}
+	}
+	const changeBurgerMenu = () => {
+		const tl = gsap.timeline({
+			onStart: () => setBurgerActive(!burgerActive),
+		})
+		if (!burgerActive && spanRefs.current.length) {
+			tl.to(spanRefs.current[0], {
+				position: 'absolute',
+				transform: 'rotate(45deg)',
+				duration: 0.1,
+				ease: 'back.in',
+			})
+				.to(spanRefs.current[1], { scale: 0, duration: 0.1, ease: 'back.in' })
+				.to(spanRefs.current[2], {
+					position: 'absolute',
+					transform: 'rotate(-45deg)',
+					width: '100%',
+					duration: 0.1,
+					ease: 'back.in',
+				})
+				.fromTo(
+					navigationRef.current,
+					{ x: '-100vw' },
+					{ x: 0, duration: 0.3, ease: 'elastic.inOut' }
+				)
+		} else {
+			tl.to(spanRefs.current[0], {
+				position: 'static',
+				transform: 'rotate(0deg)',
+				duration: 0.1,
+				ease: 'back.in',
+			})
+				.to(spanRefs.current[1], { scale: 1, duration: 0.1, ease: 'back.in' })
+				.to(spanRefs.current[2], {
+					position: 'static',
+					transform: 'rotate(0deg)',
+					width: '80%',
+					duration: 0.1,
+					ease: 'back.in',
+				})
+		}
+	}
 	return (
 		<nav className={classes.navigation} ref={navbarRef} style={filterColor}>
 			<Link to={MAIN} ref={logoRef} className={classes.logoLink}>
 				<img src={logo} alt='logo' />
 			</Link>
-			<ul className={classes.navbar}>
+			<div className={classes.burgerMenu}>
+				<button onClick={changeBurgerMenu}>
+					<span ref={addElInArr} />
+					<span ref={addElInArr} />
+					<span ref={addElInArr} />
+				</button>
+			</div>
+			<ul
+				ref={navigationRef}
+				className={`${classes.navbar} ${burgerActive ? classes.activeNav : ''}`}
+			>
 				<li>
 					<NavLink to={MAIN}>Crypto</NavLink>
 				</li>

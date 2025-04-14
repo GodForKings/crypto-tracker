@@ -67,7 +67,6 @@
 	}
 	.badGrid {
 		padding: 2vh 2vw;
-		max-width: 90vw;
 		margin: 0;
 		gap: 10px;
 		font-size: calc(1.1 * var(--elastic));

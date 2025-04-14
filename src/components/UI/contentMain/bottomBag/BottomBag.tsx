@@ -19,6 +19,9 @@ const BottomBag: FC = () => {
 			},
 			{ x: 0, duration: 1.5, ease: 'power3.out' }
 		)
+		return () => {
+			gsap.killTweensOf(refBag.current)
+		}
 	}, [])
 	return (
 		<section className={style.bottomBagContainer}>

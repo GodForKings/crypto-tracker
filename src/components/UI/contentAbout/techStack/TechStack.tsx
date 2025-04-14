@@ -44,8 +44,8 @@ const TechStack = () => {
 		})
 		tl.fromTo(
 			refDesc.current,
-			{ x: '-100px', opacity: 0 },
-			{ x: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+			{ opacity: 0, scaleY: 0 },
+			{ opacity: 1, scaleY: 1, duration: 1, ease: 'power3.out' }
 		)
 	}
 	return (
