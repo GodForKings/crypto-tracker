@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
 import classes from './Navbar.module.css'
 import { Link, NavLink } from 'react-router-dom'
-import { MAIN, ABOUT, PORTFOLIO } from '../../../constants/nameRoutes'
+import { MAIN, ABOUT, PORTFOLIO, CASES } from '../../../constants/nameRoutes'
 import logo from '../../../assets/images/logo.png'
 import { gsap } from 'gsap'
 import { useFilterColor } from '../../../hooks/modification'
@@ -113,6 +113,9 @@ const Navbar: FC = () => {
 				</li>
 				<li>
 					<NavLink to={PORTFOLIO}>Portfolio</NavLink>
+				</li>
+				<li>
+					<NavLink to={CASES}>Service</NavLink>
 				</li>
 			</ul>
 		</nav>

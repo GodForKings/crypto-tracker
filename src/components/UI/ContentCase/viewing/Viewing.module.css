@@ -1,0 +1,13 @@
+.container {
+	min-height: 80vh;
+	width: 100%;
+	background-color: #343545;
+}
+
+.service {
+	font-size: var(--elastic);
+	padding: calc(2 * var(--elastic));
+	margin: calc(1 * var(--elastic));
+	border: 3px solid #000;
+	background-color: transparent;
+}
