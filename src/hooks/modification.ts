@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom'
-import { ABOUT, PORTFOLIO } from '../constants/nameRoutes'
+import { ABOUT, PORTFOLIO, CASES } from '../constants/nameRoutes'
 import { CSSProperties } from 'react'
 
 const useFilterColor = (): CSSProperties => {
@@ -12,6 +12,14 @@ const useFilterColor = (): CSSProperties => {
 		case PORTFOLIO:
 			return {
 				filter: 'hue-rotate(200deg)',
+			}
+		case CASES:
+			return {
+				filter: 'hue-rotate(150deg)',
+			}
+		case `${CASES}/*`:
+			return {
+				opacity: 0,
 			}
 		default:
 			return {

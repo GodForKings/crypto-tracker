@@ -105,7 +105,7 @@ export const tokenSlice = createSlice({
 					return {
 						...token,
 						symbol: token.symbol.replace(/USDT$/, ''), // Меняем окончание на пустую строку
-						lastPrice: Number(token.lastPrice.toString()), // Убираем нули в конце
+						lastPrice: Number(token.lastPrice), // Убираем нули в конце
 					}
 				})
 				tokenSlice.caseReducers.checkLocal(state)

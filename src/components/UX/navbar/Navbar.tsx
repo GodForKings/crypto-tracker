@@ -37,7 +37,6 @@ const Navbar: FC = () => {
 			yoyo: true, // Возврат к исходному положению \\
 			repeat: -1,
 		})
-		console.log(spanRefs)
 		return () => {
 			gsap.killTweensOf([logoRef.current, navbarRef.current])
 		}

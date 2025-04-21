@@ -7,7 +7,7 @@ import { CASES } from '../../../../constants/nameRoutes'
 const Viewing = () => {
 	const navigate = useNavigate()
 	const redirectToService = (name: string) => {
-		navigate(`${CASES}/${name}`)
+		navigate(`${CASES}/${name.toLowerCase().replace(' ', '')}`)
 	}
 	return (
 		<section className={style.container}>
