@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import classes from './Navbar.module.css'
 import { Link, NavLink } from 'react-router-dom'
 import { MAIN, ABOUT, PORTFOLIO, CASES } from '../../../constants/nameRoutes'
@@ -14,7 +14,7 @@ const Navbar: FC = () => {
 	const spanRefs = useRef<HTMLSpanElement[]>([])
 	const navigationRef = useRef<HTMLUListElement>(null)
 
-	//  Для анимации logo  \\
+	/* Для анимации logo */
 	useEffect(() => {
 		gsap.fromTo(
 			navbarRef.current,
@@ -42,7 +42,7 @@ const Navbar: FC = () => {
 		}
 	}, [])
 
-	const addElInArr = (element: HTMLSpanElement) => {
+	const addElInArr = (element: HTMLSpanElement): void => {
 		if (element && !spanRefs.current.includes(element)) {
 			spanRefs.current.push(element)
 		}
@@ -110,9 +110,9 @@ const Navbar: FC = () => {
 				<li>
 					<NavLink to={ABOUT}>About us</NavLink>
 				</li>
-				<li>
+				{/* <li>
 					<NavLink to={PORTFOLIO}>Portfolio</NavLink>
-				</li>
+				</li> */}
 				<li>
 					<NavLink to={CASES}>Service</NavLink>
 				</li>

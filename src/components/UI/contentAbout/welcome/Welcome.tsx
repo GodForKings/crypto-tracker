@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useRef } from 'react'
+import { FC, useEffect, useState, useRef } from 'react'
 import style from './Welcome.module.css'
 import { ISlider } from '../../../../models/ISlider'
 import { gsap } from 'gsap'
@@ -73,6 +73,7 @@ const Welcome: FC = () => {
 				<h1 className={style.titleSlide} ref={refTitle}>
 					<span>{sliderItems[activeSlide].title}</span>
 				</h1>
+
 				<div
 					key={sliderItems[activeSlide].id}
 					className={style.focusSlide}
@@ -81,6 +82,7 @@ const Welcome: FC = () => {
 					<div className={style.imgSlide}>
 						<img src={sliderItems[activeSlide].img1} />
 					</div>
+
 					<div className={style.imgSlide}>
 						<img src={sliderItems[activeSlide].img2} />
 					</div>

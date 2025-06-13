@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useState } from 'react'
+import { FC, useCallback, useMemo, useState } from 'react'
 import style from './SelectToken.module.css'
 import { IToken } from '../../../../models/IToken'
 import SquareButton from '../../buttons/squareButton/SquareButton'
@@ -18,6 +18,7 @@ const SelectToken: FC<ISelected> = ({ show, disabledShow, tokens }) => {
 	const [showCount, setShowCount] = useState<boolean>(false)
 	const [targetToken, setTargetToken] = useState<IToken>()
 	const dispatch = useAppDispatch()
+
 	const removeStates = () => {
 		setTitle('')
 		setCount(0)
@@ -29,7 +30,7 @@ const SelectToken: FC<ISelected> = ({ show, disabledShow, tokens }) => {
 			token.symbol.toUpperCase().includes(title.toUpperCase())
 		)
 	}, [title, tokens])
-	const changeTargetToken = (token: IToken) => {
+	const changeTargetToken = (token: IToken): void => {
 		setTargetToken(token)
 		setShowCount(true)
 	}
@@ -65,6 +66,7 @@ const SelectToken: FC<ISelected> = ({ show, disabledShow, tokens }) => {
 						}}
 					/>
 				</div>
+
 				<div className={style.token__container}>
 					{sortedTokens.map(token => (
 						<div key={token.symbol}>
@@ -74,6 +76,7 @@ const SelectToken: FC<ISelected> = ({ show, disabledShow, tokens }) => {
 								aria-label={`Выбрать токен ${token.symbol}`}
 							>
 								<span>{token.symbol}</span>
+
 								<span
 									style={
 										token.priceChangePercent < 0
@@ -83,14 +86,17 @@ const SelectToken: FC<ISelected> = ({ show, disabledShow, tokens }) => {
 								>
 									{token.priceChangePercent}%
 								</span>
+
 								<span>${token.lastPrice}</span>
 							</button>
 						</div>
 					))}
+
 					<div className={showCount ? style.active : style.disabledInput}>
 						<p>
 							{targetToken?.symbol} ${targetToken?.lastPrice}
 						</p>
+
 						<div className={style.inputBox}>
 							<input
 								name='tokenCount'
@@ -105,8 +111,10 @@ const SelectToken: FC<ISelected> = ({ show, disabledShow, tokens }) => {
 								}}
 							/>
 						</div>
+
 						<div className={style.countContainer}>
 							<SquareButton onClick={handleAddTokenInAssets}>add</SquareButton>
+
 							<SquareButton onClick={removeStates}>cancel</SquareButton>
 						</div>
 					</div>

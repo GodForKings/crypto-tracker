@@ -1,10 +1,10 @@
-import React from 'react'
+import { FC } from 'react'
 import style from './Viewing.module.css'
 import services from '../../../../constants/servicesForClient'
 import { useNavigate } from 'react-router-dom'
 import { CASES } from '../../../../constants/nameRoutes'
 
-const Viewing = () => {
+const Viewing: FC = () => {
 	const navigate = useNavigate()
 	const redirectToService = (name: string) => {
 		navigate(`${CASES}/${name.toLowerCase().replace(' ', '')}`)
@@ -18,7 +18,9 @@ const Viewing = () => {
 					onClick={() => redirectToService(service.name)}
 				>
 					<h3>{service.name}</h3>
+
 					<div>{service.description}</div>
+
 					<div>
 						{service.sections.map(item => (
 							<div key={item.id}>

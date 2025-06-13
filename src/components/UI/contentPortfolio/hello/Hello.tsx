@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 import style from './Hello.module.css'
 
-const Hello = () => {
-	return <section className={style.container}>content hello</section>
+const Hello: FC = () => {
+	return <section className={style.container}>THIS IS WELCOME SECTION</section>
 }
 
 export default Hello

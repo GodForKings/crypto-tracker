@@ -28,6 +28,10 @@ export const publicRoutes: RouteObject[] = [
 		element: <CasePage />,
 	},
 	{
+		path: `${CASES}/:name/:id`,
+		element: <div>test</div>,
+	},
+	{
 		path: `*`,
 		element: <Navigate to={ABOUT} />,
 	},

@@ -1,20 +1,32 @@
-import React from 'react'
+import { useEffect, FC } from 'react'
 import style from './Info.module.css'
 import IServiceForClient from '../../../../models/IServiceForClient'
+import { useNavigate } from 'react-router-dom'
+import { ABOUT } from '../../../../constants/nameRoutes'
 
 interface IProps {
 	service?: IServiceForClient
 }
-const Info: React.FC<IProps> = ({ service }) => {
+const Info: FC<IProps> = ({ service }) => {
+	const navigation = useNavigate()
+
+	useEffect(() => {
+		if (!service) navigation(ABOUT)
+		window.scrollTo(0, 0)
+	}, [service])
+
 	return (
 		<section className={style.infoContainer}>
 			{service && (
 				<div className={style.boxContainer}>
 					<h2>{service.name}</h2>
+
 					<>{service.description}</>
+
 					{service.sections.map(item => (
 						<div key={item.id}>
 							<span>{item.name} : </span>
+
 							<span>{item.desc}</span>
 						</div>
 					))}

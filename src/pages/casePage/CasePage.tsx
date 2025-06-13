@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react'
+import { FC, useEffect } from 'react'
 import style from './CasePage.module.css'
 import Navbar from '../../components/UX/navbar/Navbar'
 import Footer from '../../components/UX/footer/Footer'
@@ -8,7 +8,7 @@ import services from '../../constants/servicesForClient'
 import IServiceForClient from '../../models/IServiceForClient'
 import { useFilterColor } from '../../hooks/modification'
 
-const CasePage = () => {
+const CasePage: FC = () => {
 	const filterStyle = useFilterColor()
 	const location = useLocation()
 	const { name } = useParams()
@@ -20,7 +20,9 @@ const CasePage = () => {
 	return (
 		<main className={style.container} style={filterStyle}>
 			<Navbar />
-			<Info service={service}></Info>
+
+			<Info service={service} />
+
 			<Footer />
 		</main>
 	)

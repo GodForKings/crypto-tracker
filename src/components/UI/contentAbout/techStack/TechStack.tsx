@@ -1,14 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { FC, useState, useRef, useEffect } from 'react'
 import style from './TechStack.module.css'
 import techStack from '../../../../constants/techStack'
 import { gsap } from 'gsap'
 
-const TechStack = () => {
+const TechStack: FC = () => {
 	const [selectedTech, setSelectedTech] = useState<number>(0)
 	const refSection = useRef<HTMLElement>(null)
 	const refTechHeading = useRef<HTMLHeadingElement>(null)
 	const refGrid = useRef<HTMLUListElement>(null)
 	const refDesc = useRef<HTMLParagraphElement>(null)
+
 	useEffect(() => {
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -35,6 +36,7 @@ const TechStack = () => {
 			tl.kill()
 		}
 	}, [])
+
 	const chooseTech = (id: number) => {
 		if (!refDesc.current) return
 		const tl = gsap.timeline({
@@ -54,11 +56,13 @@ const TechStack = () => {
 				<h2 className={style.techHeading} ref={refTechHeading}>
 					technology stack
 				</h2>
+
 				<ul className={style.gridArea} ref={refGrid}>
 					{techStack.length &&
 						techStack.map(tech => (
 							<li key={tech.id} className={style.techElement}>
 								<h3>{tech.name}</h3>
+
 								<button
 									className={
 										tech.id - 1 === selectedTech ? style.active : undefined
@@ -67,11 +71,16 @@ const TechStack = () => {
 										chooseTech(tech.id - 1)
 									}}
 								>
-									<img src={tech.image} className={style.techImage} />
+									<img
+										src={tech.image}
+										className={style.techImage}
+										alt={tech.name}
+									/>
 								</button>
 							</li>
 						))}
 				</ul>
+
 				<p className={style.techDesc} ref={refDesc}>
 					{techStack[selectedTech].description}
 				</p>

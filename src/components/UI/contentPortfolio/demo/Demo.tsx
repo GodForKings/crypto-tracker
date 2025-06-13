@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 import style from './Demo.module.css'
 
-const Demo = () => {
-	return <section className={style.container}>Demo content</section>
+const Demo: FC = () => {
+	return <section className={style.container}></section>
 }
 
 export default Demo

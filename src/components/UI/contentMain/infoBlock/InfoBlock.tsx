@@ -1,4 +1,4 @@
-import React, { useState, FC, useEffect, useRef } from 'react'
+import { useState, FC, useEffect, useRef } from 'react'
 import style from './InfoBlock.module.css'
 import SquareButton from '../../buttons/squareButton/SquareButton'
 import { apiTokens } from '../../../../api/apiSlice'
@@ -18,6 +18,7 @@ const InfoBlock: FC = () => {
 	const refInfo = useRef(null)
 	const formatter = new Intl.NumberFormat('en-US')
 	const dispatch = useAppDispatch()
+
 	useEffect(() => {
 		const socket = setupWebSocket(addedTokens, dispatch)
 		return () => {
@@ -26,6 +27,7 @@ const InfoBlock: FC = () => {
 			}
 		}
 	}, [addedTokens])
+
 	useEffect(() => {
 		gsap.fromTo(
 			refInfo.current,
@@ -35,31 +37,41 @@ const InfoBlock: FC = () => {
 			{ opacity: 1, duration: 2, ease: 'power3.out', delay: 0.2 }
 		)
 	}, [])
+
 	return (
 		<section className={style.container}>
 			{isLoading && <Loader />}
-			{error && <h2>sorry, it's error.Try reload</h2>}
 			<div className={style.bag} ref={refInfo}>
 				<ul className={style.badGrid}>
 					<li>asset</li>
+
 					<li>quantity</li>
+
 					<li>price</li>
+
 					<li>total cost</li>
+
 					<li>24h Change</li>
+
 					<li>% wallet</li>
 				</ul>
+
 				{addedTokens.length ? (
 					addedTokens.map(token => (
 						<ul key={token.asset} className={style.badGrid}>
 							<li>{token.asset}</li>
+
 							<li>{token.quantity}</li>
+
 							<li>${token.price}</li>
+
 							<li>
 								$
 								{token.totalCost > 1
 									? formatter.format(Number(token.totalCost.toFixed(3)))
 									: token.totalCost.toFixed(6)}
 							</li>
+
 							<li
 								style={
 									token.changeDay < 0
@@ -69,12 +81,14 @@ const InfoBlock: FC = () => {
 							>
 								{token.changeDay}%
 							</li>
+
 							<li>
 								{token.sliceInBug * 100 >= 0.01
 									? (token.sliceInBug * 100).toFixed(2)
-									: `<  0.01`}
+									: `< 0.01`}
 								%
 							</li>
+
 							<li>
 								<button
 									className={style.btnRemove}
@@ -95,6 +109,7 @@ const InfoBlock: FC = () => {
 			>
 				ADD Token
 			</SquareButton>
+
 			<SelectToken
 				tokens={tokens}
 				show={showSelect}

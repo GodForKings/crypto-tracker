@@ -1,6 +1,5 @@
-import React from 'react'
 import './App.css'
-import router from './components/AppRouter'
+import router from './router'
 import { RouterProvider } from 'react-router-dom'
 import { apiTokens } from './api/apiSlice'
 import Loader from './components/UI/loader/Loader'
@@ -11,9 +10,8 @@ import { ScrollTrigger } from 'gsap/all'
 gsap.registerPlugin(ScrollTrigger, Flip)
 
 function App() {
-	const { error, isLoading } = apiTokens.useFetchAllTokensQuery()
+	const { isLoading } = apiTokens.useFetchAllTokensQuery()
 	if (isLoading) return <Loader />
-	if (error) return <h2>wow...it's error, reload</h2>
 
 	return <RouterProvider router={router} />
 }

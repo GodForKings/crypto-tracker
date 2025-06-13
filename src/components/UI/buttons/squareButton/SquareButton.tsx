@@ -24,12 +24,15 @@ const SquareButton: FC<ICustomButton> = ({
 				<span
 					className={`${style.button__line} ${style.button__lineTop}`}
 				></span>
+
 				<span
 					className={`${style.button__line} ${style.button__lineRight}`}
 				></span>
+
 				<span
 					className={`${style.button__line} ${style.button__lineBottom}`}
 				></span>
+
 				<span
 					className={`${style.button__line} ${style.button__lineLeft}`}
 				></span>

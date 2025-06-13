@@ -1,4 +1,4 @@
-import React, { useEffect, FC, useRef } from 'react'
+import { useEffect, FC, useRef } from 'react'
 import style from './BottomBag.module.css'
 import { useAppSelector } from '../../../../hooks/redux'
 import SquareButton from '../../buttons/squareButton/SquareButton'
@@ -28,6 +28,7 @@ const BottomBag: FC = () => {
 			<div className={style.bagContent} ref={refBag}>
 				<div className={style.cartPrice}>
 					<h3>Your portfolio </h3>
+
 					<span>$ {formatter.format(cartPrice)}</span>
 				</div>
 				{cartPrice > 0 && (

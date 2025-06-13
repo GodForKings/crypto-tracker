@@ -1,7 +1,7 @@
-import React from 'react'
+import { FC } from 'react'
 import classes from './Loader.module.css'
 
-const Loader = () => {
+const Loader: FC = () => {
 	return (
 		<div className={classes.center}>
 			<div className={classes.wave}></div>

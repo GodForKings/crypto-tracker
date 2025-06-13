@@ -5,6 +5,9 @@ import { ITokenWSS } from '../models/IToken'
 let socket: WebSocket
 let reconnectInterval: NodeJS.Timeout | null = null
 
+/**
+ * Установка ВебСокет подключения для реал-тайм обновления графиков
+ */
 const setupWebSocket = (addedTokens: IAsset[], dispatch: any) => {
 	if (socket) socket.close()
 	if (addedTokens.length === 0) return
@@ -20,8 +23,8 @@ const setupWebSocket = (addedTokens: IAsset[], dispatch: any) => {
 				const data: ITokenWSS = JSON.parse(event.data)
 				dispatch(
 					updateTokenPrice({
-						s: data.s.replace(/USDT$/, ''), // название пары
-						c: Number(data.c), // цена токена
+						s: data.s.replace(/USDT$/, '') /* название пары */,
+						c: Number(data.c) /* цена токена */,
 					})
 				)
 				if (reconnectInterval) {
@@ -41,7 +44,7 @@ const setupWebSocket = (addedTokens: IAsset[], dispatch: any) => {
 		}
 	}
 
-	// переподключение сокета \\
+	/* переподключение сокета */
 	const reconnect = () => {
 		if (reconnectInterval) return
 		reconnectInterval = setInterval(() => {
