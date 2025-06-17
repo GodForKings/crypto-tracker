@@ -43,7 +43,7 @@ const SelectToken: FC<ISelected> = ({ show, disabledShow, tokens }) => {
 			}
 			dispatch(tokenInAssets(updateToken))
 		}
-	}, [targetToken, count])
+	}, [targetToken, count, dispatch])
 
 	return (
 		<div

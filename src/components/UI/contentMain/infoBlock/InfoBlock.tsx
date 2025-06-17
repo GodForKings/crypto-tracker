@@ -13,20 +13,19 @@ import { gsap } from 'gsap'
 
 const InfoBlock: FC = () => {
 	const [showSelect, setShowSelect] = useState<boolean>(false)
-	const { error, isLoading, refetch } = apiTokens.useFetchAllTokensQuery()
+	const { isLoading } = apiTokens.useFetchAllTokensQuery()
 	const { tokens, addedTokens } = useAppSelector(state => state.tokenReducer)
-	const refInfo = useRef(null)
-	const formatter = new Intl.NumberFormat('en-US')
+	const refInfo = useRef<HTMLDivElement>(null)
+	const formatter: Intl.NumberFormat = new Intl.NumberFormat('en-US')
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
 		const socket = setupWebSocket(addedTokens, dispatch)
+
 		return () => {
-			if (socket) {
-				socket.close()
-			}
+			socket && socket.close()
 		}
-	}, [addedTokens])
+	}, [addedTokens, dispatch])
 
 	useEffect(() => {
 		gsap.fromTo(
@@ -41,6 +40,7 @@ const InfoBlock: FC = () => {
 	return (
 		<section className={style.container}>
 			{isLoading && <Loader />}
+
 			<div className={style.bag} ref={refInfo}>
 				<ul className={style.badGrid}>
 					<li>asset</li>
@@ -94,7 +94,7 @@ const InfoBlock: FC = () => {
 									className={style.btnRemove}
 									onClick={() => dispatch(walletDeleteToken(token.asset))}
 								>
-									<img src={imgDelete} />
+									<img src={imgDelete} alt='delete token' />
 								</button>
 							</li>
 						</ul>
@@ -103,6 +103,7 @@ const InfoBlock: FC = () => {
 					<span className={style.bagOffer}>Add assets for tracking</span>
 				)}
 			</div>
+
 			<SquareButton
 				onClick={() => setShowSelect(true)}
 				className={style.fixedBtn}
@@ -114,7 +115,7 @@ const InfoBlock: FC = () => {
 				tokens={tokens}
 				show={showSelect}
 				disabledShow={() => setShowSelect(false)}
-			></SelectToken>
+			/>
 		</section>
 	)
 }

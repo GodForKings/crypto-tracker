@@ -1,8 +1,7 @@
 import { useEffect, FC, useRef } from 'react'
 import style from './BottomBag.module.css'
-import { useAppSelector } from '../../../../hooks/redux'
+import { useAppSelector, useAppDispatch } from '../../../../hooks/redux'
 import SquareButton from '../../buttons/squareButton/SquareButton'
-import { useAppDispatch } from '../../../../hooks/redux'
 import { walletClear } from '../../../../store/reducers/TokenSlice'
 import { gsap } from 'gsap'
 
@@ -11,18 +10,21 @@ const BottomBag: FC = () => {
 	const cartPrice = useAppSelector(state => state.tokenReducer.cart)
 	const dispatch = useAppDispatch()
 	const refBag = useRef<HTMLDivElement>(null)
+
 	useEffect(() => {
+		const currentBag: HTMLDivElement | null = refBag.current
 		gsap.fromTo(
-			refBag.current,
+			currentBag,
 			{
 				x: '-100%',
 			},
 			{ x: 0, duration: 1.5, ease: 'power3.out' }
 		)
 		return () => {
-			gsap.killTweensOf(refBag.current)
+			gsap.killTweensOf(currentBag)
 		}
 	}, [])
+
 	return (
 		<section className={style.bottomBagContainer}>
 			<div className={style.bagContent} ref={refBag}>
@@ -31,6 +33,7 @@ const BottomBag: FC = () => {
 
 					<span>$ {formatter.format(cartPrice)}</span>
 				</div>
+
 				{cartPrice > 0 && (
 					<SquareButton
 						className={style.clearBtn}

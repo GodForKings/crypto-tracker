@@ -8,11 +8,11 @@ interface IProps {
 	service?: IServiceForClient
 }
 const Info: FC<IProps> = ({ service }) => {
-	const navigation = useNavigate()
+	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!service) navigation(ABOUT)
 		window.scrollTo(0, 0)
+		!service && navigate(ABOUT)
 	}, [service])
 
 	return (

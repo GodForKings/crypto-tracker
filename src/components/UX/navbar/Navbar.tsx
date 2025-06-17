@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import classes from './Navbar.module.css'
 import { Link, NavLink } from 'react-router-dom'
-import { MAIN, ABOUT, PORTFOLIO, CASES } from '../../../constants/nameRoutes'
+import { MAIN, ABOUT, CASES } from '../../../constants/nameRoutes'
 import logo from '../../../assets/images/logo.png'
 import { gsap } from 'gsap'
 import { useFilterColor } from '../../../hooks/modification'
@@ -16,8 +16,10 @@ const Navbar: FC = () => {
 
 	/* Для анимации logo */
 	useEffect(() => {
+		const logo = logoRef.current
+		const nav = navbarRef.current
 		gsap.fromTo(
-			navbarRef.current,
+			nav,
 			{
 				y: '-5px',
 				opacity: 0.3,
@@ -29,7 +31,7 @@ const Navbar: FC = () => {
 				ease: 'power3.out',
 			}
 		)
-		gsap.to(logoRef.current, {
+		gsap.to(logo, {
 			x: `${gsap.utils.random(-10, 30)}px`,
 			duration: 3,
 			ease: 'elastic.in',
@@ -38,7 +40,7 @@ const Navbar: FC = () => {
 			repeat: -1,
 		})
 		return () => {
-			gsap.killTweensOf([logoRef.current, navbarRef.current])
+			gsap.killTweensOf([logo, nav])
 		}
 	}, [])
 
@@ -47,6 +49,7 @@ const Navbar: FC = () => {
 			spanRefs.current.push(element)
 		}
 	}
+
 	const changeBurgerMenu = () => {
 		const tl = gsap.timeline({
 			onStart: () => setBurgerActive(!burgerActive),
@@ -88,11 +91,13 @@ const Navbar: FC = () => {
 				})
 		}
 	}
+
 	return (
 		<nav className={classes.navigation} ref={navbarRef} style={filterColor}>
 			<Link to={MAIN} ref={logoRef} className={classes.logoLink}>
 				<img src={logo} alt='logo' />
 			</Link>
+
 			<div className={classes.burgerMenu}>
 				<button onClick={changeBurgerMenu}>
 					<span ref={addElInArr} />
@@ -100,6 +105,7 @@ const Navbar: FC = () => {
 					<span ref={addElInArr} />
 				</button>
 			</div>
+
 			<ul
 				ref={navigationRef}
 				className={`${classes.navbar} ${burgerActive ? classes.activeNav : ''}`}
@@ -107,12 +113,15 @@ const Navbar: FC = () => {
 				<li>
 					<NavLink to={MAIN}>Crypto</NavLink>
 				</li>
+
 				<li>
 					<NavLink to={ABOUT}>About us</NavLink>
 				</li>
+
 				{/* <li>
 					<NavLink to={PORTFOLIO}>Portfolio</NavLink>
 				</li> */}
+
 				<li>
 					<NavLink to={CASES}>Service</NavLink>
 				</li>

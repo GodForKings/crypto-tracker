@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useRef } from 'react'
+import { FC, useEffect, useState, useRef, useCallback } from 'react'
 import style from './Welcome.module.css'
 import { ISlider } from '../../../../models/ISlider'
 import { gsap } from 'gsap'
@@ -15,12 +15,14 @@ const Welcome: FC = () => {
 		{ id: 1, title: 'Your ideas are our solutions', img1: img1, img2: img2 },
 		{ id: 2, title: 'We make a flame out of a spark', img1: img3, img2: img4 },
 	]
-	const swapSlide = () => {
+
+	const swapSlide = useCallback(() => {
 		const tl = gsap.timeline({
 			onComplete: () => {
 				setActiveSlide(prev => (sliderItems.length - 1 > prev ? prev + 1 : 0))
 			},
 		})
+
 		tl.to(refSlide.current, {
 			opacity: 0,
 			x: `${gsap.utils.random(-200, -400)}px`,
@@ -32,13 +34,15 @@ const Welcome: FC = () => {
 			ease: 'power3.inOut',
 			y: '-200px',
 		})
-	}
+	}, [])
+
 	useEffect(() => {
 		const timer = setInterval(() => {
 			swapSlide()
 		}, 6000)
 		return () => clearInterval(timer)
-	}, [])
+	}, [swapSlide])
+
 	useEffect(() => {
 		const tl = gsap.timeline()
 		refSlide.current &&
@@ -67,6 +71,7 @@ const Welcome: FC = () => {
 			tl.kill()
 		}
 	}, [activeSlide])
+
 	return (
 		<section className={style.container}>
 			<div className={style.headSlide}>
@@ -80,11 +85,17 @@ const Welcome: FC = () => {
 					ref={refSlide}
 				>
 					<div className={style.imgSlide}>
-						<img src={sliderItems[activeSlide].img1} />
+						<img
+							src={sliderItems[activeSlide].img1}
+							alt={sliderItems[activeSlide].title}
+						/>
 					</div>
 
 					<div className={style.imgSlide}>
-						<img src={sliderItems[activeSlide].img2} />
+						<img
+							src={sliderItems[activeSlide].img2}
+							alt={sliderItems[activeSlide].title}
+						/>
 					</div>
 				</div>
 			</div>
